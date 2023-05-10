@@ -3,3 +3,5 @@
 venv
 .venv
 .virtualenv
+__pycach__
+.wdm
