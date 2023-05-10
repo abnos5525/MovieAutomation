@@ -14,5 +14,10 @@ This is a simple app with simple gui that search a query in a website to find a 
 1. Hossein Heydari
 2. Jarvis-AI (Collab)
 
+## Details
+Written in python 3
+You might need to download Geckodriver win64 for automation
+And install packages with `pip install -r reqquirements.txt`
+
 ## License
 Free Open Source
