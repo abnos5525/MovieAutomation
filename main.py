@@ -103,38 +103,6 @@ class Window(QMainWindow):
         self.txtOutput.setPlainText(result)
         self.cornometer_thread.stop()
         self.cornometer_thread.wait()
- 
-    # def run(self):
-    #      driver = webdriver.Firefox()
-    #      driver.get('https://digimovie.vip/')
-    #      self.txtOutput.toPlainText()
-    #      self.txtOutput.appendPlainText('Please Wait... \n')
-    #      text = self.txtmovie.text()
-    #      substring = text.split('-')
-    #      print(substring)
-    #      for i in substring:
-    #         search = i.capitalize()
-    #         WebDriverWait(driver,5).until(ex.presence_of_element_located((By.XPATH , '/html/body/div/div/header/div[3]/div/div/div[2]/form/input'))).send_keys(search + Keys.ENTER)
-    #         #time.sleep(5)
-    #         WebDriverWait(driver,6).until(ex.presence_of_element_located((By.PARTIAL_LINK_TEXT , search))).click()
-    #         #driver.find_element(By.PARTIAL_LINK_TEXT, search).click()
-    #         os.system('cls')
-    #         #imdb = driver.find_element(By.CSS_SELECTOR,'.num_holder > strong').text
-    #         imdb=WebDriverWait(driver,6).until(ex.presence_of_element_located((By.CSS_SELECTOR,'.num_holder > strong'))).text
-    #         WebDriverWait(driver,6).until(ex.presence_of_element_located((By.XPATH,'//*[@id="accordion-group--0__accordion-btn--1"]'))).click()
-    #         #driver.find_element(By.XPATH,'//*[@id="accordion-group--0__accordion-btn--1"]').click()
-
-    #         actor1 = driver.find_element(By.CSS_SELECTOR,'div.slick-current:nth-child(9) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > h3:nth-child(1)').text
-    #         actor2 = driver.find_element(By.CSS_SELECTOR,'div.slick-active:nth-child(10) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > h3:nth-child(1)').text
-    #         actor3 = driver.find_element(By.CSS_SELECTOR,'div.slick-active:nth-child(11) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > h3:nth-child(1)').text
-            
-           
-    #         self.txtOutput.appendPlainText('name: ' + search + '\n')
-    #         self.txtOutput.appendPlainText('imdb: ' + imdb + '\n')
-    #         self.txtOutput.appendPlainText('actor1: ' + actor1 + '\n')
-    #         self.txtOutput.appendPlainText('actor2: ' + actor2 + '\n')
-    #         self.txtOutput.appendPlainText('actor3: ' + actor3 + '\n')
-    #         self.txtOutput.appendPlainText('----------------------\n')
         
         
 
