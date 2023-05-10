@@ -51,8 +51,9 @@ class SearchThread(QThread):
                 result += f'actor2: {actor2}\n'
                 result += f'actor3: {actor3}\n'
                 result += '----------------------\n'
-            except Exception:
-                result += f'Not Found\n'
+           except Exception:
+            result += f'Not Found\n'
+
         driver.quit()
         self.search_complete.emit(result)
         
