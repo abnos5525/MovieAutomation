@@ -27,10 +27,10 @@ class SearchThread(QThread):
         
     def run(self):
         options = Options()
-        options.headless = True
+        options.add_argument('-headless')
         driver = webdriver.Firefox(options=options)
         driver.get('https://digimovie.vip/')
-        
+
         result = ""
         substring = self.text.split('-')
         for i in substring:
