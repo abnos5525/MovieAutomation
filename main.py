@@ -6,7 +6,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ex
 import time
 import os
-from colorama import Fore
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
@@ -29,27 +28,30 @@ class SearchThread(QThread):
         options = Options()
         options.headless = True
         driver = webdriver.Firefox(options=options)
-        driver.get('https://digimovie.vip/')
+        driver.get('https://digimovie52.pw/')
         
         result = ""
         substring = self.text.split('-')
         for i in substring:
-            search = i.capitalize()
-            WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.XPATH , '/html/body/div/div/header/div[3]/div/div/div[2]/form/input'))).send_keys(search + Keys.ENTER)
-            WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.PARTIAL_LINK_TEXT , search))).click()
-            os.system('cls')
-            imdb = WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.CSS_SELECTOR, '.num_holder > strong'))).text
-            WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.XPATH, '//*[@id="accordion-group--0__accordion-btn--1"]'))).click()
-            time.sleep(3)
-            actor1 = driver.find_element(By.CSS_SELECTOR,'div.slick-current:nth-child(9) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > h3:nth-child(1)').text
-            actor2 = driver.find_element(By.CSS_SELECTOR,'div.slick-active:nth-child(10) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > h3:nth-child(1)').text
-            actor3 = driver.find_element(By.CSS_SELECTOR,'div.slick-active:nth-child(11) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > h3:nth-child(1)').text
-            result += f'name: {search}\n'
-            result += f'imdb: {imdb}\n'
-            result += f'actor1: {actor1}\n'
-            result += f'actor2: {actor2}\n'
-            result += f'actor3: {actor3}\n'
-            result += '----------------------\n'
+            try:
+                search = i.capitalize()
+                WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.XPATH , '/html/body/div/div/header/div[3]/div/div/div[2]/form/input'))).send_keys(search + Keys.ENTER)
+                WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.PARTIAL_LINK_TEXT , search))).click()
+                os.system('cls')
+                imdb = WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.CSS_SELECTOR, '.num_holder > strong'))).text
+                WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.XPATH, '//*[@id="accordion-group--0__accordion-btn--1"]'))).click()
+                time.sleep(3)
+                actor1 = driver.find_element(By.CSS_SELECTOR,'div.slick-current:nth-child(9) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > h3:nth-child(1)').text
+                actor2 = driver.find_element(By.CSS_SELECTOR,'div.slick-active:nth-child(10) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > h3:nth-child(1)').text
+                actor3 = driver.find_element(By.CSS_SELECTOR,'div.slick-active:nth-child(11) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(2) > h3:nth-child(1)').text
+                result += f'name: {search}\n'
+                result += f'imdb: {imdb}\n'
+                result += f'actor1: {actor1}\n'
+                result += f'actor2: {actor2}\n'
+                result += f'actor3: {actor3}\n'
+                result += '----------------------\n'
+            except Exception:
+                result += f'Not Found\n'
         driver.quit()
         self.search_complete.emit(result)
         
@@ -90,9 +92,9 @@ class Window(QMainWindow):
         self.thread.search_complete.connect(self.display_result)
         
 
-        self.cornometer_thread = CornometerThread()
-        self.cornometer_thread.update_lcd.connect(self.update_lcd_display)
-        self.cornometer_thread.start()
+        # self.cornometer_thread = CornometerThread()
+        # self.cornometer_thread.update_lcd.connect(self.update_lcd_display)
+        # self.cornometer_thread.start()
         
         self.thread.start()
         
