@@ -26,14 +26,23 @@ class SearchThread(QThread):
         
     def run(self):
         options = Options()
-        options.headless = True
+        options.add_argument('-headless')
         driver = webdriver.Firefox(options=options)
+<<<<<<< HEAD
         driver.get('https://digimovie52.pw/')
         
         result = ""
         substring = self.text.split('-')
         for i in substring:
             try:
+=======
+        driver.get('https://digimovie.vip/')
+
+        result = ""
+        substring = self.text.split('-')
+        for i in substring:
+           try:
+>>>>>>> f0260ea4111f9937a2602fe1f1c95de4f23faa22
                 search = i.capitalize()
                 WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.XPATH , '/html/body/div/div/header/div[3]/div/div/div[2]/form/input'))).send_keys(search + Keys.ENTER)
                 WebDriverWait(driver, 5).until(ex.presence_of_element_located((By.PARTIAL_LINK_TEXT , search))).click()
@@ -50,14 +59,16 @@ class SearchThread(QThread):
                 result += f'actor2: {actor2}\n'
                 result += f'actor3: {actor3}\n'
                 result += '----------------------\n'
+<<<<<<< HEAD
             except Exception:
                 result += f'Not Found\n'
+=======
+           except Exception:
+            result += f'Not Found\n'
+
+>>>>>>> f0260ea4111f9937a2602fe1f1c95de4f23faa22
         driver.quit()
-        self.search_complete.emit(result)
-        
-        
-        
-        
+        self.search_complete.emit(result)       
         
 class CornometerThread(QThread):
     update_lcd = pyqtSignal(float)
@@ -105,8 +116,11 @@ class Window(QMainWindow):
         self.txtOutput.setPlainText(result)
         self.cornometer_thread.stop()
         self.cornometer_thread.wait()
+<<<<<<< HEAD
         
         
+=======
+>>>>>>> f0260ea4111f9937a2602fe1f1c95de4f23faa22
 
 if __name__ == '__main__':
     manage.starter()
